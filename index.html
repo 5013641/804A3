@@ -215,16 +215,16 @@
             padding: 12px 20px;
             margin: 0 10px;
             font-size: 16px;
-            border: 2px solid var(--accent-color-light-pink);
-            background-color: var(--background-light);
-            color: var(--accent-color-dark);
+            background-color: var(--accent-color-light-pink);
+            color: var(--dark-text-colour);
             border-radius: 5px;
+            border: 0;
             cursor: pointer;
             transition: all 0.3s ease;
         }
 
         button:hover {
-            background-color: var(--accent-color-light-pink);
+            background-color: var(--accent-color-pink);
             color: white;
             border-color: var(--accent-color-dark);
         }
@@ -234,7 +234,33 @@
         }
 
         .highlight{
-            border: 10px solid var(--accent-color-light-pink);
+            border: 10px solid var(--accent-color-pink);
+        }
+
+        #task4Container{
+            min-height: 650px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #task4ButtonsContainer{
+            margin-bottom: 20px;
+        }
+
+        input{
+            height: 50px;
+            width: 200px;
+            font-size: large;
+            text-align: center;
+            border: 1px solid var(--accent-color-light-pink);
+            background-color: var(--background-dark);
+            color: var(--accent-color-light-pink)
+        }
+
+        body.light-mode input{
+            background-color: var(--background-light);
+            color: var(--dark-text-colour)
         }
 
     </style>
@@ -301,9 +327,9 @@
         <hr class = "horizontalLine">
 
             <!-- Task 4 -->
-             <section>
-                <h2>Task 4 Javascript with button</h2>
-                <div>
+             <section id = "task4Container">
+                <h2>Task 4: Javascript with buttons</h2>
+                <div id = "task4ButtonsContainer">
                     <button id = "catButton" onclick="doClick('cat')">Cat</button>
                     <button id = "dogButton"  onclick="doClick('dog')">Dog</button>
                     <button id = "frogButton"  onclick="doClick('frog')">Frog</button>
