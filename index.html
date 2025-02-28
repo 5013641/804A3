@@ -97,6 +97,7 @@
             align-items: center;
             margin-top: 75px;
             width: 100%;
+            margin-bottom: 75px;
         }
 
 
@@ -209,6 +210,33 @@
             border: 1px solid var(--accent-color-light-pink);
         }
 
+        /* Task 4 styling */
+        button {
+            padding: 12px 20px;
+            margin: 0 10px;
+            font-size: 16px;
+            border: 2px solid var(--accent-color-light-pink);
+            background-color: var(--background-light);
+            color: var(--accent-color-dark);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background-color: var(--accent-color-light-pink);
+            color: white;
+            border-color: var(--accent-color-dark);
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .highlight{
+            border: 10px solid var(--accent-color-light-pink);
+        }
+
     </style>
 </head>
 
@@ -276,11 +304,14 @@
              <section>
                 <h2>Task 4 Javascript with button</h2>
                 <div>
-                    <button id = "catButton">Cat</button>
-                    <button id = "dogButton">Dog</button>
-                    <button id = "frogButton">Frog</button>
+                    <button id = "catButton" onclick="doClick('cat')">Cat</button>
+                    <button id = "dogButton"  onclick="doClick('dog')">Dog</button>
+                    <button id = "frogButton"  onclick="doClick('frog')">Frog</button>
                 </div>
-                <input type="text" readonly>
+                <input type="text" readonly id ="animalButtonText">
+                <p id ="animalMessage"></p>
+                <img id = "animalImage" width="300px" alt="animal image" class = "hide"/>
+                <p class = "hide" id = "sourceText">Source: <a id = "animalImageSource" class = "hide"></a></p>
              </section>
 
     </div>
@@ -424,7 +455,8 @@
                         from: commmonweallthbank@email.com, subject: URGENT ACTION REQUIRED, message: Suspicious activity detected \
                         Please urgently provide your credit card informaiton to confirm your identity and secure your account. One way to prevent such attacks \
                         is increased awareness so victims know what to look out for such as urgent requests and slightly mispelled company names.",
-                source: "https://support.microsoft.com/en-us/windows/protect-yourself-from-phishing-0c7ea947-ba98-3bd9-7184-430e1f860a44#:~:text=Phishing%20(pronounced%3A%20fishing)%20is,that%20pretend%20to%20be%20legitimate."
+                source: "https://support.microsoft.com/en-us/windows/protect-yourself-from-phishing-0c7ea947-ba98-3bd9-7184-430e1f860a44#:~\
+                // :text=Phishing%20(pronounced%3A%20fishing)%20is,that%20pretend%20to%20be%20legitimate."
             },
             {
                 attack: "Man in the Middle Attacks",
@@ -461,7 +493,8 @@
                         to comporomise senstitive data such as passwords, tokens and user information. One leading cause of such an attack is poor code design and implementation \
                         of access controls. A website is also vulnerable to such an attack when credentials are not encrypted when they are sent. Improved design and implementation \
                         of access controls and identity management is a key fix for this attack.",
-                source: "https://www.contrastsecurity.com/glossary/broken-authentication#:~:text=Authentication%20is%20%E2%80%9Cbroken%E2%80%9D%20when%20attackers,of%20broken%20authentication%20is%20widespread."
+                source: "https://www.contrastsecurity.com/glossary/broken-authentication#:~:text=Authentication%20is%20%E2%80%9Cbro\
+                // ken%E2%80%9D%20when%20attackers,of%20broken%20authentication%20is%20widespread."
             },
             {
                 attack: "Click Fraud",
@@ -514,6 +547,7 @@
             imgSrcReference.textContent = "Source :"
             const imgReference = document.createElement('a');
             imgReference.setAttribute('href', webAttack.img_ref);
+            imgReference.setAttribute('target', "_blank");
             imgReference.textContent = webAttack.img_ref;
             imgSrcReference.appendChild(imgReference);
             nameCell.appendChild(imgSrcReference)
@@ -522,6 +556,7 @@
             const informationCell = document.createElement("td");
             const infoLink = document.createElement('a');
             infoLink.setAttribute("href", webAttack.source);
+            infoLink.setAttribute("target", "_blank");
             infoLink.textContent = webAttack.source;
             infoLink.classList.add("webAttackInformationLink");
             informationCell.classList.add("task3InfoCell");
@@ -537,10 +572,50 @@
 
             rowIndex % 2 == 0 ? row.classList.add('evenRow') : row.classList.add('oddRow');
         })
-        
 
-        // Task 5
+        const task4Data = [
+            {
+                animal: "cat",
+                image: "images/cat.jpg",
+                source: "https://img.freepik.com/premium-vector/cute-pink-cat-cartoon-vector_839893-74.jpg"
+            },
+            {
+                animal: "dog",
+                image: "images/dog.jpg",
+                source: "https://ih1.redbubble.net/image.5452110499.7484/bg,f8f8f8-flat,750x,075,f-pad,750x1000,f8f8f8.u2.webp"
+            },{
+                animal: "frog",
+                image: "images/frog.jpg",
+                source: "https://ih1.redbubble.net/image.2436562146.4020/flat,750x,075,f-pad,750x1000,f8f8f8.jpg"
+            }
+        ]
         
+        let lastClicked = ""
+        // Task 4
+        const doClick = (button) => {
+            if (lastClicked !== "") {
+                document.querySelector(lastClicked).classList.remove("highlight");
+            }
+            lastClicked = `#${button}Button`
+            document.querySelector(lastClicked).classList.add("highlight");
+            const textfield = document.querySelector("#animalButtonText");
+            textfield.value = `User has clicked ${button}`;
+            const messageField = document.querySelector("#animalMessage");
+            messageField.textContent = `${button} is cilcked`;
+            const imageField = document.querySelector("#animalImage");
+            imageField.classList.remove("hide");
+            document.querySelector("#sourceText").classList.remove("hide");
+            const animalImageSource = document.querySelector("#animalImageSource");
+            task4Data.forEach(animalData => {
+                if (animalData.animal === button) {
+                    imageField.src = animalData.image;
+                    animalImageSource.setAttribute("href", animalData.source);
+                    animalImageSource.classList.remove("hide")
+                    animalImageSource.textContent = animalData.source;
+                    animalImageSource.setAttribute("target", "_blank");
+                }
+            })
+        }
 
      </script>
 
