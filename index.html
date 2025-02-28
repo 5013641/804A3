@@ -28,12 +28,26 @@
             display: flex;
             justify-content: center;
             height: 100vh;
+            font-size: large;
         }
 
         body.light-mode {
             background-color: var(--background-light);
             color: var(--dark-text-colour);
         }
+
+        a {
+            color: var(--accent-color-pink);
+        }
+
+        a:hover{
+            color: var(--link-hover);
+        }
+
+        a:visited {
+            color: var(--link-visited);
+        }
+
 
         .clickable :hover {
             opacity: 0.7;
@@ -44,7 +58,7 @@
 
         #websiteHeader{
             background-color:var(--accent-background-dark);
-            min-height: 200px;
+            min-height: 180px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -55,6 +69,7 @@
             right: 0px;
             width: 100%;
         }
+
         body.light-mode #websiteHeader{
             background-color: var(--accent-color-pink); 
             color: var(--white-text-colour);
@@ -73,6 +88,7 @@
         #darkModeToggle {
             width: 30px;
             height: 30px;
+            accent-color: var(--accent-color-light-pink); 
         }
 
         #content{
@@ -90,7 +106,7 @@
             font-weight: bold;
             text-align: left;
             margin-bottom: 20px;
-            font-size: larger;
+            font-size: x-large;
         }
 
         table{
@@ -100,7 +116,6 @@
             align-self: center;
             caption-side: top;
             border-collapse: separate;
-            border-spacing: 0;
         }
 
         td {
@@ -112,14 +127,16 @@
         #task2Table{
             margin-top: 210px;
             border: 2px dotted var(--accent-color-light-pink);
+            border-spacing: 0;
+
         }
 
-
-        #task2TableHeader{
+        /* Used for task 2 and 3 tables */
+        .tableHeader{
             background-color: var(--accent-color-pink);
             color: var(--dark-text-colour);
             font-style: normal;
-            font-size: large;
+            font-size: larger;
             height: 50px;
         }
 
@@ -127,11 +144,11 @@
             color: var(--white-text-colour)
         }
 
-        #task2ActivityCol{
+        #activityCol {
             width: 60%;
         }
 
-        .task2OddRow{
+        .oddRow{
             background-color: var(--accent-color-light-pink);
             color: var(--accent-background-dark);
         }
@@ -147,17 +164,51 @@
             margin-bottom: 5px;
         }
 
-        a{
-            color: var(--accent-color-pink);
+        .horizontalLine{
+            width: 100%;
+            border: 1px solid var(--accent-color-light-pink);
+            margin-top: 75px;
         }
 
-        a:hover{
-            color: var(--link-hover);
+        /* Task 3 Styling */
+
+        #task3Table {
+            margin-top: 75px;
+            max-width: 100%;
+            table-layout: fixed;
+            border: 1px solid var(--accent-color-light-pink);
+            border-collapse: collapse;
         }
 
-        a:visited {
-            color: var(--link-visited);
+        #task3Table td{
+            overflow-wrap: break-word;
+            padding: 20px;
         }
+
+        #task3Table th{
+            padding: 20px;
+        }
+
+        .webAttackInformationLink{
+            display: block;
+            margin-top: 20px;
+        }
+        .task3InfoCell{
+            text-align: left;
+        }
+
+        #task3Table .oddRow td{
+            border: 1px solid var(--accent-background-dark);
+        }
+
+        body.light-mode #task3Table .oddRow td{
+            border: 1px solid var(--background-light);
+        }
+
+        .evenRow td{
+            border: 1px solid var(--accent-color-light-pink);
+        }
+
     </style>
 </head>
 
@@ -185,28 +236,55 @@
             </div>
      </header>
 
-     <div id = "content">
+    <div id = "content">
+
         <!-- task 2 -->
+
         <table id = "task2Table">
-            <caption>Task 2: April 2025 Events in Sydney</caption>
-            <thead id = "task2TableHeader">
+            <caption>Task 2: UOW 2025 Autumn Session Key Dates</caption>
+            <thead class = "tableHeader">
                 <tr>
-                    <th id="task2ActivityCol">Activity</th>
+                    <th id="activityCol">Activity</th>
                     <th >Date</th>
                 </tr>
             </thead>
             <tbody id = "task2TableContent"></tbody>
-         </table>
-         <p>Task 2 Information source:
-            <a href = "https://whatson.cityofsydney.nsw.gov.au/" target="_blank">Whats on Sydney</a>
+            </table>
+            <p>Task 2 Information source:
+            <a href = "https://www.uow.edu.au/student/dates/#d.en.186577" target="_blank">UOW Key Dates</a>
         </p>
 
-    
-         <!-- task 3 -->
-         <table>
-            
-         </table>
-        </div>
+        <hr class = "horizontalLine">
+
+            <!-- task 3 -->
+
+        <table id = "task3Table">
+            <caption>Task 3: 10 Common Web Attacks</caption>
+            <thead class = "tableHeader">
+                <tr>
+                    <th class="firstTableCol">Name</th>
+                    <th >Web Attacks</th>
+                </tr>
+            </thead>
+            <tbody id = "task3TableContent"></tbody>
+        </table>
+
+
+        <hr class = "horizontalLine">
+
+            <!-- Task 4 -->
+             <section>
+                <h2>Task 4 Javascript with button</h2>
+                <div>
+                    <button id = "catButton">Cat</button>
+                    <button id = "dogButton">Dog</button>
+                    <button id = "frogButton">Frog</button>
+                </div>
+                <input type="text" readonly>
+             </section>
+
+    </div>
+
 
 
      <!-- Script at the bottom so data can be automatically populated into loaded html elements -->
@@ -220,7 +298,9 @@
             viewModeLabel.textContent = modeText;
         }
 
+
         // TASK 2
+
         const task2Data = [
             {
                 activity: "First day to enrol for re-enrolling (continuing students)",
@@ -288,23 +368,179 @@
         // Populate the table for task 2 with the above data
         const task2TableContent = document.querySelector("#task2TableContent");
         task2Data.forEach((event, rowIndex) => {
+            // create all the elements needed
             const row = document.createElement("tr");
             const activityCell = document.createElement("td");
             const dateCell = document.createElement("td");
+
+            // Changing the content as required
             dateCell.classList.add("table2DateCell")
             activityCell.textContent = event.activity;
             dateCell.textContent = event.date;
             if (event.importantInfo) {
+                // if there is extra information then create a list containing it
                 createLists(activityCell, event)
             }
             if(event.link) {
+                // If there is a link, then create an element for it
                 createLinks(activityCell, event);
             }
+            // Finally need to append the elements to the cells and append the row to the table
             row.appendChild(activityCell);
             row.appendChild(dateCell);
             task2TableContent.appendChild(row);
-            rowIndex % 2 !==0 && row.classList.add("task2OddRow")
+            rowIndex % 2 !==0 && row.classList.add("oddRow")
         })
+
+
+        // TASK 3
+
+        const table3Data = [
+            {
+                attack: "Cross-Site Scripting",
+                img: "images/crossSiteScripting.JPG",
+                img_ref: "https://evalian.co.uk/wp-content/uploads/2022/03/XSS-attacks-what-is-cross-site-scripting.png",
+                description: "This attack relies on attackers injecting malicious code into vulnerable websites through compromised user \
+                            interactions. The malicious code can perform actions such as stealing sensitive data like \
+                            session tokens or cookies. One way this type of attack can be prevented by sanitising user input as it is received  \
+                            , to ensure that executable code is not injected or executed.",
+                source: "https://portswigger.net/web-security/cross-site-scripting"
+            },
+            {
+                attack: "SQL Injection Attacks",
+                img: "images/sqlInjection.JPG",
+                img_ref: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5pnA5vbWEKmu-7c3D3n80kguJZgG95HDakA&s",
+                description: "SQL injection relies on exploiting input fields on a website. Instead of sending expected inputs, malicious SQL code \
+                            is sent instead. Once this code is executed it can access sensitive data in the database if proper protections are not in place. \
+                            This attack can also be preveneted through sanatizing user input.",
+                source: "https://www.tripwire.com/state-of-security/most-common-website-security-attacks-and-how-to-protect-yourself"
+            },
+            {
+                attack: "Phishing",
+                img: "images/phishing.JPG",
+                img_ref: "https://vipre.com/wp-content/uploads/2022/11/spear-phishing-1024x747.jpeg",
+                description: "Phising is a type of social engineering attack that imitate legitimate sources to trick users into revealing personal information. \
+                        One common method is targetted emails appearing to be from reputable companies conveying a sense of urgency to the users, such as \
+                        from: commmonweallthbank@email.com, subject: URGENT ACTION REQUIRED, message: Suspicious activity detected \
+                        Please urgently provide your credit card informaiton to confirm your identity and secure your account. One way to prevent such attacks \
+                        is increased awareness so victims know what to look out for such as urgent requests and slightly mispelled company names.",
+                source: "https://support.microsoft.com/en-us/windows/protect-yourself-from-phishing-0c7ea947-ba98-3bd9-7184-430e1f860a44#:~:text=Phishing%20(pronounced%3A%20fishing)%20is,that%20pretend%20to%20be%20legitimate."
+            },
+            {
+                attack: "Man in the Middle Attacks",
+                img: "images/mim.JPG",
+                img_ref: "https://www.imperva.com/learn/application-security/man-in-the-middle-attack-mitm/",
+                description: "This attack refers to a hacker placing themselves between a user and an application. Attackers can intercept legitimate \
+                        communications to steal sensitive informaiton. Secure end to end ecryption is one protection against this, as even if an attacker intercepts \
+                        web packets, they will not be able to decrypt them.",
+                source: "https://www.imperva.com/learn/application-security/man-in-the-middle-attack-mitm/"
+            },
+            {
+                attack: "Dos/DDoS",
+                img: "images/ddos.JPG",
+                img_ref: "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1FIBEeoyzoa64lVGlWKaRV/3b878bb03df1729b48cd3f667cdfe3de/amplification_ddos_example.png",
+                description: "This stands for denail of service/distributed denial of service attacks. This is when a malicious actor uses machines to overwhelm a target. \
+                    For example, flooding a server with requests can cause it to crash or corrupt data.",
+                source: "https://www.fortinet.com/resources/cyberglossary/dos-vs-ddos"
+            },
+            {
+                attack: "Clickjacking",
+                img: "images/clickJacking.JPG",
+                img_ref: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHLv6Y6SHfpPW24OAHOjcfjjar0MckoLU3eg&s",
+                description: "Cickjacking refers to deceiving a user into interacting with a malicious target site in ways they did not intend. \
+                    One example of this is displaying a button on a web page with harmless text such as 'Click to load image'. Once clicked the user is \
+                    actually interacting with hidden code from a malicious site. This is done by embedding the actual target site code\
+                    inside an iframe, setting the iframes opacity to zero and placing it on top of the decoy button.",
+                source: "https://developer.mozilla.org/en-US/docs/Web/Security/Attacks/Clickjacking"
+            },
+            {
+                attack: "Broken Authentication",
+                img: "images/brokenAuth.JPG",
+                img_ref: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4b0oL6pVxGGsmMCORlLh_TZ4tQ-j4NkTT5A&s",
+                description: "Systems are subject to broken authentication attacks when attackers are able to exploit weaknesses in authentication system \
+                        to comporomise senstitive data such as passwords, tokens and user information. One leading cause of such an attack is poor code design and implementation \
+                        of access controls. A website is also vulnerable to such an attack when credentials are not encrypted when they are sent. Improved design and implementation \
+                        of access controls and identity management is a key fix for this attack.",
+                source: "https://www.contrastsecurity.com/glossary/broken-authentication#:~:text=Authentication%20is%20%E2%80%9Cbroken%E2%80%9D%20when%20attackers,of%20broken%20authentication%20is%20widespread."
+            },
+            {
+                attack: "Click Fraud",
+                img: "images/clickFraud.JPG",
+                img_ref: "https://multichannelmerchant.com/wp-content/uploads/2022/06/click-fraud-illustration-feature.jpg",
+                description: "When bots and other malicious actors repeatedly click on adds this can lead to artificially inflated advertisement interactions. \
+                    If not protected against such an attack, a company can spend millions on advertisments that real users are not engaging with. Companies can use automated click\
+                    fraud protection to mitigate such attacks.",
+                source: "https://www.clixtell.com/click-fraud-protection/?gad_source=1&gclid=CjwKCAiAt4C-BhBcEiwA8Kp0CdB5bvf3c65yeLkooeIHIQMsUNvPKD_N2E5P3flTtYSV3pxmCRquqhoCgLUQAvD_BwE"
+            },
+            {
+                attack: "HTTP Response Splitting",
+                img: "images/httpSplitting.JPG",
+                img_ref: "https://thecyphere.com/wp-content/uploads/2022/03/HTTP-Response-Splitting-Attack-768x292-1.webp",
+                description: "Web servers know how to respond to requests that come in an expected format. HTTP response splitting is a type of attack where HTTP responses \
+                        can be wrapped in malicioius code. This may lead to the server executing the code and this may lead to malicious responses being sent out by the web server, \
+                            Any incoming requests must be properly sanitised to protect against these types of attacks.",
+                source: "https://www.bitdefender.com/en-au/blog/hotforsecurity/understanding-iot-vulnerabilities-http-response-splitting"
+            },
+            {
+                attack: "Fuzzing",
+                img: "images/fuzzing.JPG",
+                img_ref: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsgxc2Zx2kRIPVcsLH0E3uy24R97grjcVPfw&s",
+                description: "This type of attack occurs when a hacker inputs large amounts of data into a website in the hopes that it will crash the site. \
+                        Once the site has crashed the hackers uses software to analyse the site's weak spots, and then uses these weak spots to gain further access to the server.\
+                        Updated security measures and installing the latests patches are mitigation techniques against fuzzing attacks.",
+                source: "https://www.tripwire.com/state-of-security/most-common-website-security-attacks-and-how-to-protect-yourself"
+            }
+        ]
+
+        // Populate table 3 with the above data
+        const table3 = document.querySelector("#task3TableContent");
+        table3Data.forEach((webAttack, rowIndex) => {
+            // create the elements we need for table 3
+            const row = document.createElement("tr");
+            row.classList.add('task3TableRow')
+            const nameCell = document.createElement("td");
+            const nameText = document.createElement('h3');
+            nameText.textContent = webAttack.attack;
+            nameCell.appendChild(nameText);
+            
+            // Creating the image element in the name cell
+            const attackImg = document.createElement('img');
+            attackImg.setAttribute('src', webAttack.img);
+            attackImg.setAttribute('width', '300px');
+            nameCell.appendChild(attackImg);
+
+            // Creating the link for the image reference in the name cell
+            const imgSrcReference = document.createElement('p');
+            imgSrcReference.textContent = "Source :"
+            const imgReference = document.createElement('a');
+            imgReference.setAttribute('href', webAttack.img_ref);
+            imgReference.textContent = webAttack.img_ref;
+            imgSrcReference.appendChild(imgReference);
+            nameCell.appendChild(imgSrcReference)
+
+            // Creating the description cell
+            const informationCell = document.createElement("td");
+            const infoLink = document.createElement('a');
+            infoLink.setAttribute("href", webAttack.source);
+            infoLink.textContent = webAttack.source;
+            infoLink.classList.add("webAttackInformationLink");
+            informationCell.classList.add("task3InfoCell");
+            informationCell.textContent = webAttack.description;
+            informationCell.appendChild(infoLink);
+
+            // Adding the new cells to the row
+            row.appendChild(nameCell);
+            row.appendChild(informationCell);
+
+            // Adding the row to the table
+            table3.appendChild(row);
+
+            rowIndex % 2 == 0 ? row.classList.add('evenRow') : row.classList.add('oddRow');
+        })
+        
+
+        // Task 5
+        
 
      </script>
 
