@@ -36,7 +36,7 @@
             color: var(--dark-text-colour);
         }
 
-        a{
+        a {
             color: var(--accent-color-pink);
         }
 
@@ -58,7 +58,7 @@
 
         #websiteHeader{
             background-color:var(--accent-background-dark);
-            min-height: 200px;
+            min-height: 180px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -69,6 +69,7 @@
             right: 0px;
             width: 100%;
         }
+
         body.light-mode #websiteHeader{
             background-color: var(--accent-color-pink); 
             color: var(--white-text-colour);
@@ -87,6 +88,7 @@
         #darkModeToggle {
             width: 30px;
             height: 30px;
+            accent-color: var(--accent-color-light-pink); 
         }
 
         #content{
@@ -146,7 +148,7 @@
             width: 60%;
         }
 
-        .task2OddRow{
+        .oddRow{
             background-color: var(--accent-color-light-pink);
             color: var(--accent-background-dark);
         }
@@ -168,29 +170,23 @@
             margin-top: 75px;
         }
 
-        /* Task 3 styles */
+        /* Task 3 Styling */
+
         #task3Table {
             margin-top: 75px;
-            border: 2px solid var(--accent-color-light-pink);
-            border-collapse: collapse;
             max-width: 100%;
-            box-sizing: border-box;
             table-layout: fixed;
+            border: 1px solid var(--accent-color-light-pink);
+            border-collapse: collapse;
         }
 
         #task3Table td{
-            border: 1px solid var(--accent-color-light-pink);
             overflow-wrap: break-word;
             padding: 20px;
         }
 
         #task3Table th{
-            border: 1px solid var(--background-light);
             padding: 20px;
-        }
-
-        body.light-mode #task3Table th{
-            border-color: var(--background-dark);
         }
 
         .webAttackInformationLink{
@@ -198,7 +194,19 @@
             margin-top: 20px;
         }
         .task3InfoCell{
-            text-align: center;
+            text-align: left;
+        }
+
+        #task3Table .oddRow td{
+            border: 1px solid var(--accent-background-dark);
+        }
+
+        body.light-mode #task3Table .oddRow td{
+            border: 1px solid var(--background-light);
+        }
+
+        .evenRow td{
+            border: 1px solid var(--accent-color-light-pink);
         }
 
     </style>
@@ -228,8 +236,10 @@
             </div>
      </header>
 
-     <div id = "content">
+    <div id = "content">
+
         <!-- task 2 -->
+
         <table id = "task2Table">
             <caption>Task 2: UOW 2025 Autumn Session Key Dates</caption>
             <thead class = "tableHeader">
@@ -239,14 +249,16 @@
                 </tr>
             </thead>
             <tbody id = "task2TableContent"></tbody>
-         </table>
-         <p>Task 2 Information source:
+            </table>
+            <p>Task 2 Information source:
             <a href = "https://www.uow.edu.au/student/dates/#d.en.186577" target="_blank">UOW Key Dates</a>
         </p>
 
         <hr class = "horizontalLine">
-         <!-- task 3 -->
-         <table id = "task3Table">
+
+            <!-- task 3 -->
+
+        <table id = "task3Table">
             <caption>Task 3: 10 Common Web Attacks</caption>
             <thead class = "tableHeader">
                 <tr>
@@ -255,8 +267,24 @@
                 </tr>
             </thead>
             <tbody id = "task3TableContent"></tbody>
-         </table>
-        </div>
+        </table>
+
+
+        <hr class = "horizontalLine">
+
+            <!-- Task 4 -->
+             <section>
+                <h2>Task 4 Javascript with button</h2>
+                <div>
+                    <button id = "catButton">Cat</button>
+                    <button id = "dogButton">Dog</button>
+                    <button id = "frogButton">Frog</button>
+                </div>
+                <input type="text" readonly>
+             </section>
+
+    </div>
+
 
 
      <!-- Script at the bottom so data can be automatically populated into loaded html elements -->
@@ -270,7 +298,9 @@
             viewModeLabel.textContent = modeText;
         }
 
+
         // TASK 2
+
         const task2Data = [
             {
                 activity: "First day to enrol for re-enrolling (continuing students)",
@@ -359,10 +389,12 @@
             row.appendChild(activityCell);
             row.appendChild(dateCell);
             task2TableContent.appendChild(row);
-            rowIndex % 2 !==0 && row.classList.add("task2OddRow")
+            rowIndex % 2 !==0 && row.classList.add("oddRow")
         })
 
+
         // TASK 3
+
         const table3Data = [
             {
                 attack: "Cross-Site Scripting",
@@ -462,7 +494,7 @@
 
         // Populate table 3 with the above data
         const table3 = document.querySelector("#task3TableContent");
-        table3Data.forEach(webAttack => {
+        table3Data.forEach((webAttack, rowIndex) => {
             // create the elements we need for table 3
             const row = document.createElement("tr");
             row.classList.add('task3TableRow')
@@ -498,11 +530,16 @@
 
             // Adding the new cells to the row
             row.appendChild(nameCell);
-            row.appendChild(informationCell)
+            row.appendChild(informationCell);
 
             // Adding the row to the table
             table3.appendChild(row);
+
+            rowIndex % 2 == 0 ? row.classList.add('evenRow') : row.classList.add('oddRow');
         })
+        
+
+        // Task 5
         
 
      </script>
