@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>804 A3</title>
+    <style>
+        :root {
+            --accent-color-pink: #da7697; 
+            --accent-color-light-pink: #e6b0c2; 
+            --background-light: #F8F4F9; 
+            --background-dark: #353535; 
+            --white-text-colour: #F8F4F9; 
+            --accent-background-dark: #252525;
+            --dark-text-colour: #353535;
+            --secondary-color-dark: #7e7e7e;
+            --link-hover: rgb(180, 99, 126);
+            --link-visited: #9c13be;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            transition: background-color 0.3s, color 0.3s;
+            background-color: var(--background-dark);
+            color: var(--accent-color-light-pink);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        body.light-mode {
+            background-color: var(--background-light);
+            color: var(--dark-text-colour);
+        }
+
+        .clickable :hover {
+            opacity: 0.7;
+            cursor: pointer;
+        }
+
+        /* TASK 1 STLYING */
+
+        #websiteHeader{
+            background-color:var(--accent-background-dark);
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            box-sizing: border-box;
+            position: fixed;
+            top: 0px;
+            right: 0px;
+            width: 100%;
+        }
+        body.light-mode #websiteHeader{
+            background-color: var(--accent-color-pink); 
+            color: var(--white-text-colour);
+        }
+
+        #toggleContainer {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            column-gap: 10px;
+        }
+
+
+        #darkModeToggle {
+            width: 30px;
+            height: 30px;
+        }
+
+        #content{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 75px;
+            width: 100%;
+        }
+
+
+        /* TASK 2 STYLING */
+
+        caption{
+            font-weight: bold;
+            text-align: left;
+            margin-bottom: 20px;
+            font-size: larger;
+        }
+
+        table{
+            text-align: left;
+            width: 95%;
+            table-layout: auto;
+            align-self: center;
+            caption-side: top;
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+
+        td {
+            box-sizing: border-box;
+            padding: 10px;
+        }
+
+
+        #task2Table{
+            margin-top: 210px;
+            border: 2px dotted var(--accent-color-light-pink);
+        }
+
+
+        #task2TableHeader{
+            background-color: var(--accent-color-pink);
+            color: var(--dark-text-colour);
+            font-style: normal;
+            font-size: large;
+            height: 50px;
+        }
+
+        body.light-mode #task2TableHeader{
+            color: var(--white-text-colour)
+        }
+
+        #task2ActivityCol{
+            width: 60%;
+        }
+
+        .task2OddRow{
+            background-color: var(--accent-color-light-pink);
+            color: var(--accent-background-dark);
+        }
+
+        .table2DateCell{
+            font-style: oblique;
+            white-space: pre-line;
+        }
+
+        .task2Links{
+            display: block;
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+
+        a{
+            color: var(--accent-color-pink);
+        }
+
+        a:hover{
+            color: var(--link-hover);
+        }
+
+        a:visited {
+            color: var(--link-visited);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Task 1 -->
+     <header id = "websiteHeader">
+            <div>
+                <h1>5013641 Chantelle Conlon Scoullar</h1>
+                <h2>COMP 804: Web Security</h2>
+                <h3>Assignment 1, due Monday 03 Mar 2025</h3>
+            </div>
+            
+    
+            <!-- A check box for switching between light and dark modes -->
+            <div id = "toggleContainer" class = "clickable">
+                <label for ="darkModeToggle" id = "viewModeLabel">Dark mode on</label>
+                <input 
+                    id ="darkModeToggle" 
+                    type="checkbox" 
+                    onClick = "toggleDarkMode()"
+                    checked
+                >
+                </input>
+            </div>
+     </header>
+
+     <div id = "content">
+        <!-- task 2 -->
+        <table id = "task2Table">
+            <caption>Task 2: April 2025 Events in Sydney</caption>
+            <thead id = "task2TableHeader">
+                <tr>
+                    <th id="task2ActivityCol">Activity</th>
+                    <th >Date</th>
+                </tr>
+            </thead>
+            <tbody id = "task2TableContent"></tbody>
+         </table>
+         <p>Task 2 Information source:
+            <a href = "https://whatson.cityofsydney.nsw.gov.au/" target="_blank">Whats on Sydney</a>
+        </p>
+
+    
+         <!-- task 3 -->
+         <table>
+            
+         </table>
+        </div>
+
+
+     <!-- Script at the bottom so data can be automatically populated into loaded html elements -->
+     <script >
+        // Function to handle light and dark mode toggling
+        const toggleDarkMode = () => {
+            const viewModeLabel = document.getElementById("viewModeLabel");
+            const toggle = document.getElementById("darkModeToggle");
+            let modeText = toggle.checked ? "Dark mode on " : "Dark mode off"
+            document.body.classList.toggle("light-mode") 
+            viewModeLabel.textContent = modeText;
+        }
+
+        // TASK 2
+        const task2Data = [
+            {
+                activity: "First day to enrol for re-enrolling (continuing students)",
+                date: "18 Nov 2024"
+            },
+            {
+                activity: "First day to enrol for new students (commencing students)",
+                date: "02 Dec 2024"
+            },
+            {
+                activity: "Orientation",
+                date: "24 Feb - 27 Feb 2025 \n (Wollongong Campus)",
+                link: "https://www.uow.edu.au/student/get-started/orientation/"
+            },
+            {
+                activity: "Lectures Commence (weeks 1-7)",
+                date: "	03 Mar - 18 Apr 2025"
+            },
+            {
+                activity: "Last day to enrol / add subjects yourself",
+                date: "14 Mar 2025"
+            },
+            {
+                activity: "Last day to enrol / add subjects with Head of Students approval",
+                date: "	21 Mar 2025"
+            },
+            {
+                activity: "CENSUS DATE",
+                date: "31 Mar 2025",
+                link: "https://uowedu.service-now.com/askuow?id=kb_article_view&sysparm_article=KB0012659",
+                importantInfo: [
+                    "Fees due", 
+                    "Last day to withdraw from subject/s without paying for them", 
+                    "HECS/FEES HELP debt reporting date",
+                    "Last day to change HECS/FEES HELP billing option"
+                ]
+            },
+            {
+                activity: "Student Services and Amenities Fees Due",
+                date: "01 Apr 2025"
+            }
+        ]
+
+        // function to create links in task2 table
+        const createLinks = (activityCell, event) => {
+            const link = document.createElement("a");
+            link.setAttribute("href", event.link);
+            link.setAttribute("target", "_blank");
+            link.textContent = `Learn more about ${event.activity} >`
+            link.classList.add("task2Links")
+            activityCell.appendChild(link);
+        }
+
+        // function to create bullet point in task2 table
+        const createLists = (activityCell, event) => {
+            const ul = document.createElement("ul");
+            event.importantInfo.forEach(point => {
+                const li = document.createElement("li");
+                li.textContent = point;
+                ul.appendChild(li);
+            })
+            activityCell.appendChild(ul)
+        }
+
+        // Populate the table for task 2 with the above data
+        const task2TableContent = document.querySelector("#task2TableContent");
+        task2Data.forEach((event, rowIndex) => {
+            const row = document.createElement("tr");
+            const activityCell = document.createElement("td");
+            const dateCell = document.createElement("td");
+            dateCell.classList.add("table2DateCell")
+            activityCell.textContent = event.activity;
+            dateCell.textContent = event.date;
+            if (event.importantInfo) {
+                createLists(activityCell, event)
+            }
+            if(event.link) {
+                createLinks(activityCell, event);
+            }
+            row.appendChild(activityCell);
+            row.appendChild(dateCell);
+            task2TableContent.appendChild(row);
+            rowIndex % 2 !==0 && row.classList.add("task2OddRow")
+        })
+
+     </script>
+
+</body>
+</html>
