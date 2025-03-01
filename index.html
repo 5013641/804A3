@@ -7,12 +7,12 @@
     <style>
         /* Have used internal CSS, wasn't sure if we could use separate css file for this assessment */
         :root {
-            --accent-color-pink: #da7697; 
-            --accent-color-light-pink: #e6b0c2; 
-            --background-light: #F8F4F9; 
-            --background-dark: #353535; 
+            --pink-color: #da7697; 
+            --light-pink-color: #e6b0c2; 
+            --off-white-color: #F8F4F9; 
+            --dark-grey-color: #353535; 
             --white-text-colour: #F8F4F9; 
-            --accent-background-dark: #252525;
+            --secondary-dark-grey: #252525;
             --dark-text-colour: #353535;
             --secondary-color-dark: #7e7e7e;
             --link-hover: rgb(180, 99, 126);
@@ -21,32 +21,32 @@
 
         body {
             font-family: Arial, sans-serif;
-            padding: 20px;
             transition: background-color 0.3s, color 0.3s;
-            background-color: var(--background-dark);
-            color: var(--accent-color-light-pink);
+            background-color: var(--off-white-color);
+            color: var(--dark-text-colour);
             margin: 0;
             display: flex;
-            justify-content: center;
-            height: 100vh;
-            font-size: large;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding-bottom: 50px;
         }
 
-        body.light-mode {
-            background-color: var(--background-light);
-            color: var(--dark-text-colour);
+        body.dark-mode {
+            background-color: var(--dark-grey-color);
+            color: var(--light-pink-color);
         }
 
         a {
-            color: var(--accent-color-pink);
+            color: #1E90FF ;
         }
 
         a:hover{
-            color: var(--link-hover);
+            color: #FF4500 ;
         }
 
         a:visited {
-            /* color: var(--link-visited); */
+            color: #800080;
         }
 
 
@@ -58,51 +58,49 @@
 
         /* TASK 1 STYLING */
         #websiteHeader{
-            background-color:var(--accent-background-dark);
-            min-height: 180px;
+            background-color: var(--pink-color); 
+            color: var(--white-text-colour);
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 20px;
+            padding-left: 20px;
             box-sizing: border-box;
-            position: fixed;
-            top: 0px;
-            right: 0px;
             width: 100%;
         }
 
-        body.light-mode #websiteHeader{
-            background-color: var(--accent-color-pink); 
-            color: var(--white-text-colour);
+        body.dark-mode #websiteHeader{
+            background-color:var(--secondary-dark-grey);
+            color: var(--pink-color);
         }
 
         #toggleContainer {
-            position: absolute;
-            top: 20px;
-            right: 20px;
             display: flex;
             align-items: center;
             column-gap: 10px;
+            position: fixed;
+            top: 5px;
+            right: 20px;
+            background-color: var(--pink-color);
+            padding: 10px;
+            border-radius: 30px;
+            margin: 10px;
+            border: 1px solid var(--off-white-color);
+            width: 140px;
+        }
+
+        body.dark-mode #toggleContainer {
+            color: var(--dark-text-colour);
+            border: 1px solid var(--dark-grey-color);
+
         }
 
 
         #darkModeToggle {
-            width: 30px;
-            height: 30px;
-            accent-color: var(--accent-color-light-pink); 
+            width: 20px;
+            height: 20px;
+            accent-color: var(--light-pink-color); 
         }
-
-        #content{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 75px;
-            width: 100%;
-            margin-bottom: 75px;
-        }
-
-
-
+        
         /* TASK 2 STYLING */
         caption{
             font-weight: bold;
@@ -113,11 +111,12 @@
 
         table{
             text-align: left;
-            width: 95%;
+            width: 90%;
             table-layout: auto;
             align-self: center;
             caption-side: top;
             border-collapse: separate;
+            margin-top: 55px;
         }
 
         td {
@@ -127,23 +126,21 @@
 
 
         #task2Table{
-            margin-top: 210px;
-            border: 2px dotted var(--accent-color-light-pink);
+            border: 3px dotted var(--light-pink-color);
             border-spacing: 0;
-
         }
 
         /* Used for task 2 and 3 tables */
         .tableHeader{
-            background-color: var(--accent-color-pink);
-            color: var(--dark-text-colour);
+            background-color: var(--pink-color);
+            color: var(--white-text-colour);
             font-style: normal;
             font-size: larger;
             height: 50px;
         }
 
-        body.light-mode #task2TableHeader{
-            color: var(--white-text-colour)
+        body.dark-mode .tableHeader{
+            color: var(--dark-text-colour);
         }
 
         #activityCol {
@@ -151,8 +148,8 @@
         }
 
         tr:nth-child(even) {
-            background-color: var(--accent-color-light-pink);
-            color: var(--accent-background-dark);
+            background-color: var(--light-pink-color);
+            color: var(--secondary-dark-grey);
         }
 
         .table2DateCell{
@@ -162,13 +159,12 @@
 
         .task2Links{
             display: block;
-            margin-top: 5px;
-            margin-bottom: 5px;
+            margin-bottom: 20px;
         }
 
         .horizontalLine{
             width: 100%;
-            border: 1px solid var(--accent-color-light-pink);
+            border: 1px solid var(--light-pink-color);
             margin-top: 75px;
         }
 
@@ -178,7 +174,7 @@
             margin-top: 75px;
             max-width: 100%;
             table-layout: fixed;
-            border: 1px solid var(--accent-color-light-pink);
+            border: 1px solid var(--light-pink-color);
             border-collapse: collapse;
         }
 
@@ -198,15 +194,15 @@
 
         /* Table 3 odd and even borders for light and dark modes*/
         #task3Table tr:nth-child(odd) td{
-            border: 1px solid var(--accent-color-light-pink);
+            border: 1px solid var(--light-pink-color);
         }
 
         #task3Table tr:nth-child(even) td{
-            border: 1px solid var(--accent-background-dark);
+            border: 1px solid var(--off-white-color);
         }
 
-        body.light-mode #task3Table tr:nth-child(even) td{
-            border: 1px solid var(--background-light);
+        body.dark-mode #task3Table tr:nth-child(even) td{
+            border: 1px solid var(--secondary-dark-grey);
         }
 
         /* TASK 4 STYLING */
@@ -214,8 +210,7 @@
             padding: 12px 20px;
             margin: 0 10px;
             font-size: 16px;
-            background-color: var(--accent-color-light-pink);
-            color: var(--dark-text-colour);
+            background-color: var(--light-pink-color);
             border-radius: 5px;
             border: 0;
             cursor: pointer;
@@ -223,8 +218,8 @@
         }
 
         button:hover {
-            background-color: var(--accent-color-pink);
-            color: white;
+            background-color: var(--pink-color);
+            color:var(--white-text-colour);
             border-color: var(--accent-color-dark);
         }
 
@@ -233,7 +228,7 @@
         }
 
         .highlight{
-            border: 10px solid var(--accent-color-pink);
+            border: 10px solid var(--pink-color);
         }
 
         #task4Container{
@@ -241,6 +236,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
+            width: 100%;
         }
 
         #task4ButtonsContainer{
@@ -252,498 +249,44 @@
             width: 200px;
             font-size: large;
             text-align: center;
-            border: 1px solid var(--accent-color-light-pink);
-            background-color: var(--background-dark);
-            color: var(--accent-color-light-pink)
+            border: 1px solid var(--light-pink-color);
+            background-color: var(--off-white-color);
         }
 
-        body.light-mode input{
-            background-color: var(--background-light);
-            color: var(--dark-text-colour)
+        body.dark-mode input{
+            background-color: var(--dark-grey-color);
+            color: var(--light-pink-color);
         }
+
+        /* Task 5 */
+        #task5Section {
+            margin-bottom: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        @media (max-width: 750px) {
+            #task3Table img {
+                width: 200px;
+            }
+            #toggleContainer {
+                top: 0px
+            }
+            #websiteHeader {
+                margin-top: 70px;
+            }
+        }
+
+        @media (max-width: 525px) {
+            #task3Table img {
+                width: 100px;
+            }
+        }
+
 
     </style>
-</head>
 
-<body>
-
-    <!-- Task 1 -->
-     <header id = "websiteHeader">
-            <div>
-                <h1>5013641 Chantelle Conlon Scoullar</h1>
-                <h2>COMP 804: Web Security</h2>
-                <h3>Assignment 1, due Monday 03 Mar 2025</h3>
-            </div>
-            
-    
-            <!-- A check box for switching between light and dark modes -->
-            <div id = "toggleContainer" class = "clickable">
-                <label for ="darkModeToggle" id = "viewModeLabel">Dark mode on</label>
-                <input 
-                    id ="darkModeToggle" 
-                    type="checkbox" 
-                    onClick = "toggleDarkMode()"
-                    checked
-                >
-                </input>
-            </div>
-     </header>
-
-
-    <div id = "content">
-
-        <!-- task 2 -->
-        <table id = "task2Table">
-            <caption>Task 2: UOW 2025 Autumn Session Key Dates</caption>
-            <thead class = "tableHeader">
-                <tr>
-                    <th id="activityCol">Activity</th>
-                    <th >Date</th>
-                </tr>
-            </thead>
-            <tbody id = "task2TableContent">
-                <tr>
-                    <td>
-                        First day to enrol for re-enrolling (continuing students)
-                    </td>
-                    <td class = "table2DateCell">
-                        18 Nov 2024
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        First day to enrol for new students (commencing students)
-                    </td>
-                    <td class = "table2DateCell">
-                        02 Dec 2024
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Orientation
-                    </td>
-                    <td class = "table2DateCell">
-                        24 Feb - 27 Feb 2025 
-                        <br> 
-                        (Wollongong Campus)
-                        <br> Further information about Orientation is available
-                        <a 
-                            href = "https://www.uow.edu.au/student/get-started/orientation/"
-                            target = "_blank"
-                            class = "task2Links"
-                        >
-                            here
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Lectures Commence (weeks 1-7)
-                    </td>
-                    <td class = "table2DateCell">
-                        03 Mar - 18 Apr 2025
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Last day to enrol / add subjects yourself
-                    </td>
-                    <td class = "table2DateCell">
-                        14 Mar 2025
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Last day to enrol / add subjects with Head of Students approval
-                    </td>
-                    <td class = "table2DateCell">
-                        21 Mar 2025
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        CENSUS DATE
-                        <ul>
-                            <li>Fees due</li>
-                            <li>Last day to withdraw from subject/s without paying for them</li>
-                            <li>HECS / FEE HELP debt reporting date</li>
-                            <li>Last day to change HECS / FEE HELP billing option</li>
-                        </ul>
-                        <a href = "https://uowedu.service-now.com/askuow?id=kb_article_view&sysparm_article=KB0012659">
-                            Learn more about Census date >
-                        </a>
-                    </td>
-                    <td class = "table2DateCell">
-                        31 Mar 2025
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Student Services and Amenities Fees Due
-                    </td>
-                    <td class = "table2DateCell">
-                        01 Apr 2025
-                    </td>
-                </tr>
-            </tbody>
-            </table>
-            <p>Task 2 Information source:
-            <a 
-                href = "https://www.uow.edu.au/student/dates/#d.en.186577" 
-                target="_blank"
-                class = "task2Links"
-            >
-                UOW Key Dates
-            </a>
-        </p>
-
-        <hr class = "horizontalLine">
-
-
-        <!-- task 3 -->
-
-        <table id = "task3Table">
-            <caption>Task 3: 10 Common Web Attacks</caption>
-            <thead class = "tableHeader">
-                <tr>
-                    <th class="firstTableCol">Name</th>
-                    <th >Web Attacks</th>
-                </tr>
-            </thead>
-            <tbody id = "task3TableContent">
-                <tr class = "task3TableRow">
-                    <td>
-                        <p>Cross-Site Scripting</p>
-                        <img
-                            width = "300px"
-                            src = "images/crossSiteScripting.JPG"
-                        >
-                        <p>Source: </p>
-                        <a
-                            href = "https://evalian.co.uk/wp-content/uploads/2022/03/XSS-attacks-what-is-cross-site-scripting.png"
-                            target = "_blank"
-                        >
-                            https://evalian.co.uk/wp-content/uploads/2022/03/XSS-attacks-what-is-cross-site-scripting.png
-                        </a>
-                    </td>
-                    <td>
-                        <p>This attack relies on attackers injecting malicious code into vulnerable websites through compromised user  
-                            interactions. The malicious code can perform actions such as stealing sensitive data like 
-                            session tokens or cookies. One way this type of attack can be prevented by sanitising user input as it is received
-                            , to ensure that executable code is not injected or executed.</p>
-                        <a
-                            class = "webAttackInformationLink"
-                            href = "https://portswigger.net/web-security/cross-site-scripting"
-                            target = "_blank"
-                        >
-                            https://portswigger.net/web-security/cross-site-scripting
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p>SQL Injection Attacks</p>
-                        <img
-                            width = "300px"
-                            src = "images/sqlInjection.JPG"
-                        >
-                        <p>Source: </p>
-                        <a
-                            href = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5pnA5vbWEKmu-7c3D3n80kguJZgG95HDakA&s"
-                            target = "_blank"
-                        >
-                            https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5pnA5vbWEKmu-7c3D3n80kguJZgG95HDakA&s
-                        </a>
-                    </td>
-                    <td>
-                        <p>
-                            SQL injection relies on exploiting input fields on a website. Instead of sending expected inputs, malicious SQL code
-                            is sent instead. Once this code is executed it can access sensitive data in the database if proper protections are not in place.
-                            This attack can also be preveneted through sanatizing user input.
-                        </p>
-                        <a
-                            class = "webAttackInformationLink"
-                            href = "https://www.tripwire.com/state-of-security/most-common-website-security-attacks-and-how-to-protect-yourself"
-                            target = "_blank"
-                        >
-                            https://www.tripwire.com/state-of-security/most-common-website-security-attacks-and-how-to-protect-yourself
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p>Phishing</p>
-                        <img
-                            width = "300px"
-                            src = "images/phishing.JPG"
-                        >
-                        <p>Source: </p>
-                        <a
-                            href = "https://vipre.com/wp-content/uploads/2022/11/spear-phishing-1024x747.jpeg"
-                            target = "_blank"
-                        >
-                            href = "https://vipre.com/wp-content/uploads/2022/11/spear-phishing-1024x747.jpeg
-                        </a>
-                    </td>
-                    <td>
-                        <p>
-                            Phising is a type of social engineering attack that imitate legitimate sources to trick users into revealing personal information. 
-                            One common method is targetted emails appearing to be from reputable companies conveying a sense of urgency to the users, such as 
-                            from: commmonweallthbank@email.com, subject: URGENT ACTION REQUIRED, message: Suspicious activity detected 
-                            Please urgently provide your credit card informaiton to confirm your identity and secure your account. One way to prevent such attacks 
-                            is increased awareness so victims know what to look out for such as urgent requests and slightly mispelled company names.
-                        </p>
-                        <a
-                            class = "webAttackInformationLink"
-                            href = "https://support.microsoft.com/en-us/windows/protect-yourself-from-phishing-0c7ea947-ba98-3bd9-7184-430e1f860a44#:~"
-                            target = "_blank"
-                        >
-                            https://support.microsoft.com/en-us/windows/protect-yourself-from-phishing-0c7ea947-ba98-3bd9-7184-430e1f860a44#:~
-                        </a>
-                    </td>
-                </tr>                
-                <tr>
-                    <td>
-                        <p>Man in the Middle Attacks</p>
-                        <img
-                            width = "300px"
-                            src = "images/mim.JPG"
-                        >
-                        <p>Source: </p>
-                        <a
-                            href = "https://www.imperva.com/learn/application-security/man-in-the-middle-attack-mitm/"
-                            target = "_blank"
-                        >
-                            https://www.imperva.com/learn/application-security/man-in-the-middle-attack-mitm/
-                        </a>
-                    </td>
-                    <td>
-                        <p>
-                            This attack refers to a hacker placing themselves between a user and an application. Attackers can intercept legitimate 
-                            communications to steal sensitive informaiton. Secure end to end ecryption is one protection against this, as even if an attacker intercepts 
-                            web packets, they will not be able to decrypt them.
-                        </p>
-                        <a
-                            class = "webAttackInformationLink
-                            href = "https://www.imperva.com/learn/application-security/man-in-the-middle-attack-mitm/"
-                            target = "_blank"
-                        >
-                            https://www.imperva.com/learn/application-security/man-in-the-middle-attack-mitm/
-                        </a>
-                    </td>
-                </tr>               
-                <tr>
-                    <td>
-                        <p>Dos/DDoS</p>
-                        <img
-                            width = "300px"
-                            src = "images/ddos.JPG"
-                        >
-                        <p>Source: </p>
-                        <a
-                            href = "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1FIBEeoyzoa64lVGlWKaRV/3b878bb03df1729b48cd3f667cdfe3de/amplification_ddos_example.png"
-                            target = "_blank"
-                        >
-                            https://cf-assets.www.cloudflare.com/slt3lc6tev37/1FIBEeoyzoa64lVGlWKaRV/3b878bb03df1729b48cd3f667cdfe3de/amplification_ddos_example.png
-                        </a>
-                    </td>
-                    <td>
-                        <p>
-                            This stands for denail of service/distributed denial of service attacks. This is when a malicious actor uses machines to overwhelm a target
-                            For example, flooding a server with requests can cause it to crash or corrupt data.
-                        </p>
-                        <a
-                            class = "webAttackInformationLink"
-                            href = "https://www.fortinet.com/resources/cyberglossary/dos-vs-ddos"
-                            target = "_blank"
-                        >
-                            https://www.fortinet.com/resources/cyberglossary/dos-vs-ddos
-                        </a>
-                    </td>
-                </tr>                
-                <tr>
-                    <td>
-                        <p>Clickjacking</p>
-                        <img
-                            width = "300px"
-                            src = "images/clickJacking.JPG"
-                        >
-                        <p>Source: </p>
-                        <a
-                            href = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHLv6Y6SHfpPW24OAHOjcfjjar0MckoLU3eg&s"
-                            target = "_blank"
-                        >
-                            https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHLv6Y6SHfpPW24OAHOjcfjjar0MckoLU3eg&s
-                        </a>
-                    </td>
-                    <td>
-                        <p>
-                            Cickjacking refers to deceiving a user into interacting with a malicious target site in ways they did not intend.
-                            One example of this is displaying a button on a web page with harmless text such as 'Click to load image'. Once clicked the user is
-                            actually interacting with hidden code from a malicious site. This is done by embedding the actual target site code
-                            inside an iframe, setting the iframes opacity to zero and placing it on top of the decoy button.
-                        </p>
-                        <a
-                            class = "webAttackInformationLink"
-                            href = "https://developer.mozilla.org/en-US/docs/Web/Security/Attacks/Clickjacking"
-                            target = "_blank"
-                        >
-                            https://developer.mozilla.org/en-US/docs/Web/Security/Attacks/Clickjacking
-                        </a>
-                    </td>
-                </tr>                
-                <tr>
-                    <td>
-                        <p>Broken Authentication</p>
-                        <img
-                            width = "300px"
-                            src = "images/brokenAuth.JPG"
-                        >
-                        <p>Source: </p>
-                        <a
-                            href = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4b0oL6pVxGGsmMCORlLh_TZ4tQ-j4NkTT5A&s"
-                            target = "_blank"
-                        >
-                            https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4b0oL6pVxGGsmMCORlLh_TZ4tQ-j4NkTT5A&s"
-                        </a>
-                    </td>
-                    <td>
-                        <p>
-                            Systems are subject to broken authentication attacks when attackers are able to exploit weaknesses in authentication system
-                            to comporomise senstitive data such as passwords, tokens and user information. One leading cause of such an attack is poor code design and implementation
-                            of access controls. A website is also vulnerable to such an attack when credentials are not encrypted when they are sent. Improved design and implementation
-                            of access controls and identity management is a key fix for this attack.
-                        </p>
-                        <a
-                            class = "webAttackInformationLink"
-                            href = "https://www.contrastsecurity.com/glossary/broken-authentication#:~:text=Authentication%20is%20%E2%80%9Cbro//\
-                                ken%E2%80%9D%20when%20attackers,of%20broken%20authentication%20is%20widespread
-                            target = "_blank"
-                        >
-                            https://www.contrastsecurity.com/glossary/broken-authentication#:~:text=Authentication%20is%20%E2%80%9Cbro// 
-                            ken%E2%80%9D%20when%20attackers,of%20broken%20authentication%20is%20widespread
-                        </a>
-                    </td>
-                </tr>               
-                <tr>
-                    <td>
-                        <p>Click Fraud</p>
-                        <img
-                            width = "300px"
-                            src = "images/clickFraud.JPG"
-                        >
-                        <p>Source: </p>
-                        <a
-                            href = "https://multichannelmerchant.com/wp-content/uploads/2022/06/click-fraud-illustration-feature.jpg"
-                            target = "_blank"
-                        >
-                            https://multichannelmerchant.com/wp-content/uploads/2022/06/click-fraud-illustration-feature.jpg"
-                        </a>
-                    </td>
-                    <td>
-                        <p>
-                            When bots and other malicious actors repeatedly click on adds this can lead to artificially inflated advertisement interactions.
-                            If not protected against such an attack, a company can spend millions on advertisments that real users are not engaging with. Companies can use automated click
-                            fraud protection to mitigate such attacks.
-                        </p>
-                        <a
-                            class = "webAttackInformationLink"
-                            href = "https://www.clixtell.com/click-fraud-protection/?gad_source=1&gclid=CjwKCAiAt4C-BhBcEiwA8Kp0CdB5bvf3c65yeLkooeIHIQMsUNvPKD_N2E5P3flTtYSV3pxmCRquqhoCgLUQAvD_BwE"
-                            target = "_blank"
-                        >
-                            https://www.clixtell.com/click-fraud-protection/?gad_source=1&gclid=CjwKCAiAt4C-BhBcEiwA8Kp0C
-                            dB5bvf3c65yeLkooeIHIQMsUNvPKD_N2E5P3flTtYSV3pxmCRquqhoCgLUQAvD_BwE
-                        </a>
-                    </td>
-                </tr>                
-                <tr>
-                    <td>
-                        <p>HTTP Response Splitting</p>
-                        <img
-                            width = "300px"
-                            src = "images/httpSplitting.JPG"
-                        >
-                        <p>Source: </p>
-                        <a
-                            href = "https://thecyphere.com/wp-content/uploads/2022/03/HTTP-Response-Splitting-Attack-768x292-1.webp"
-                            target = "_blank"
-                        >
-                            https://thecyphere.com/wp-content/uploads/2022/03/HTTP-Response-Splitting-Attack-768x292-1.webp
-                        </a>
-                    </td>
-                    <td>
-                        <p>
-                            Web servers know how to respond to requests that come in an expected format. HTTP response splitting is a type of attack where HTTP responses
-                            can be wrapped in malicioius code. This may lead to the server executing the code and this may lead to malicious responses being sent out by the web server,
-                            Any incoming requests must be properly sanitised to protect against these types of attacks.
-                        </p>
-                        <a
-                            class = "webAttackInformationLink"
-                            href = "https://www.bitdefender.com/en-au/blog/hotforsecurity/understanding-iot-vulnerabilities-http-response-splitting"
-                            target = "_blank"
-                        >
-                            https://www.bitdefender.com/en-au/blog/hotforsecurity/understanding-iot-vulnerabilities-http-response-splitting
-                        </a>
-                    </td>
-                </tr>                
-                <tr>
-                    <td>
-                        <p>Fuzzing</p>
-                        <img
-                            width = "300px"
-                            src = "images/fuzzing.JPG""
-                        >
-                        <p>Source: </p>
-                        <a
-                            href = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsgxc2Zx2kRIPVcsLH0E3uy24R97grjcVPfw&s"
-                            target = "_blank"
-                        >
-                            https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsgxc2Zx2kRIPVcsLH0E3uy24R97grjcVPfw&s
-                        </a>
-                    </td>
-                    <td>
-                        <p>
-                            This type of attack occurs when a hacker inputs large amounts of data into a website in the hopes that it will crash the site.
-                            Once the site has crashed the hackers uses software to analyse the site's weak spots, and then uses these weak spots to gain further access to the server.
-                            Updated security measures and installing the latests patches are mitigation techniques against fuzzing attacks.
-                        </p>
-                        <a
-                            class = "webAttackInformationLink"
-                            href = "https://www.tripwire.com/state-of-security/most-common-website-security-attacks-and-how-to-protect-yourself"
-                            target = "_blank"
-                        >
-                            https://www.tripwire.com/state-of-security/most-common-website-security-attacks-and-how-to-protect-yourself
-                        </a>
-                    </td>
-                </tr>
-
-            </tbody>
-        </table>
-
-
-        <hr class = "horizontalLine">
-
-
-        <!-- Task 4 -->
-
-        <section id = "task4Container">
-            <h2>Task 4: Javascript with buttons</h2>
-            <div id = "task4ButtonsContainer">
-                <button id = "catButton" onclick="doClick('cat')">Cat</button>
-                <button id = "dogButton"  onclick="doClick('dog')">Dog</button>
-                <button id = "frogButton"  onclick="doClick('frog')">Frog</button>
-            </div>
-            <input type="text" readonly id ="animalButtonText">
-            <p id ="animalMessage"></p>
-            <img id = "animalImage" width="300px" alt="animal image" class = "hide"/>
-            <p class = "hide" id = "sourceText">Source: <a id = "animalImageSource" class = "hide"></a></p>
-        </section>
-
-    </div>
-
-
-
-     <!-- Script at the bottom so data can be automatically populated into loaded html elements -->
      <!-- Have placed javascript here as wasn't sure if we could use separate javascript file for this assessment -->
      <script >
         // Function to handle light and dark mode toggling
@@ -751,7 +294,7 @@
             const viewModeLabel = document.getElementById("viewModeLabel");
             const toggle = document.getElementById("darkModeToggle");
             let modeText = toggle.checked ? "Dark mode on " : "Dark mode off"
-            document.body.classList.toggle("light-mode") 
+            document.body.classList.toggle("dark-mode") 
             viewModeLabel.textContent = modeText;
         }
 
@@ -812,6 +355,538 @@
             })
         }
      </script>
+</head>
 
+<body>
+
+    <!-- Task 1 -->
+     <header id = "websiteHeader">
+            <div>
+                <h1>5013641 Chantelle Conlon Scoullar</h1>
+                <h2>COMP 804: Web Security</h2>
+                <h3>Assignment 1, due Monday 03 Mar 2025</h3>
+            </div>
+            
+    
+            <!-- A check box for switching between light and dark modes -->
+            <div id = "toggleContainer" class = "clickable">
+                <label for ="darkModeToggle" id = "viewModeLabel">Dark mode off</label>
+                <input 
+                    id ="darkModeToggle" 
+                    type="checkbox" 
+                    onClick = "toggleDarkMode()"
+                >
+                </input>
+            </div>
+     </header>
+
+        <!-- task 2 -->
+    <table id = "task2Table">
+        <caption>Task 2: UOW 2025 Autumn Session Key Dates</caption>
+        <thead class = "tableHeader">
+            <tr>
+                <th id="activityCol">Activity</th>
+                <th >Date</th>
+            </tr>
+        </thead>
+        <tbody >
+            <tr>
+                <td>
+                    First day to enrol for re-enrolling (continuing students)
+                </td>
+                <td class = "table2DateCell">
+                    18 Nov 2024
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    First day to enrol for new students (commencing students)
+                </td>
+                <td class = "table2DateCell">
+                    02 Dec 2024
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Orientation
+                </td>
+                <td class = "table2DateCell">
+                    24 Feb - 27 Feb 2025 
+                    <br> 
+                    (Wollongong Campus)
+                    <br> Further information about Orientation is available
+                    <a 
+                        href = "https://www.uow.edu.au/student/get-started/orientation/"
+                        target = "_blank"
+                    >
+                        here
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Lectures Commence (weeks 1-7)
+                </td>
+                <td class = "table2DateCell">
+                    03 Mar - 18 Apr 2025
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Last day to enrol / add subjects yourself
+                </td>
+                <td class = "table2DateCell">
+                    14 Mar 2025
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Last day to enrol / add subjects with Head of Students approval
+                </td>
+                <td class = "table2DateCell">
+                    21 Mar 2025
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    CENSUS DATE
+                    <ul>
+                        <li>Fees due</li>
+                        <li>Last day to withdraw from subject/s without paying for them</li>
+                        <li>HECS / FEE HELP debt reporting date</li>
+                        <li>Last day to change HECS / FEE HELP billing option</li>
+                    </ul>
+                    <a 
+                        href = "https://uowedu.service-now.com/askuow?id=kb_article_view&sysparm_article=KB0012659"
+                        class = "task2Links"
+                    >
+                        Learn more about Census date >
+                    </a>
+                </td>
+                <td class = "table2DateCell">
+                    31 Mar 2025
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Student Services and Amenities Fees Due
+                </td>
+                <td class = "table2DateCell">
+                    01 Apr 2025
+                </td>
+            </tr>
+        </tbody>
+        </table>
+        <p>Task 2 Information source:
+        <a 
+            href = "https://www.uow.edu.au/student/dates/#d.en.186577" 
+            target="_blank"
+        >
+            UOW Key Dates
+        </a>
+    </p>
+
+    <hr class = "horizontalLine">
+
+
+    <!-- task 3 -->
+
+    <table id = "task3Table">
+        <caption>Task 3: 10 Common Web Attacks</caption>
+        <thead class = "tableHeader">
+            <tr>
+                <th >Name</th>
+                <th >Web Attacks</th>
+            </tr>
+        </thead>
+        <tbody >
+            <tr >
+                <td>
+                    <p>Cross-Site Scripting</p>
+                    <img
+                        width = "300px"
+                        src = "images/crossSiteScripting.JPG"
+                    >
+                    <p>Source: </p>
+                    <a
+                        href = "https://evalian.co.uk/wp-content/uploads/2022/03/XSS-attacks-what-is-cross-site-scripting.png"
+                        target = "_blank"
+                    >
+                        https://evalian.co.uk/wp-content/uploads/2022/03/XSS-attacks-what-is-cross-site-scripting.png
+                    </a>
+                </td>
+                <td>
+                    <p>
+                        Cross site scripting is a type of attack that relies on injecting malicious code into websites. The attack
+                        works by exploiting vulnerabilities in the website through compromise user interactions. Once code is injected
+                        it can then execute in the browser and perform harmful actions, such as stealing senstivie information like
+                        cookies or session tokens.
+                    </p>
+                    <p>
+                        One way to prevent such attacks is to properly validate and sanitise user input. Properly santitised input will
+                        ensure that no malicious code is executed.
+                    </p>
+                    <a
+                        class = "webAttackInformationLink"
+                        href = "https://portswigger.net/web-security/cross-site-scripting"
+                        target = "_blank"
+                    >
+                        https://portswigger.net/web-security/cross-site-scripting
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>SQL Injection Attacks</p>
+                    <img
+                        width = "300px"
+                        src = "images/sqlInjection.JPG"
+                    >
+                    <p>Source: </p>
+                    <a
+                        href = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5pnA5vbWEKmu-7c3D3n80kguJZgG95HDakA&s"
+                        target = "_blank"
+                    >
+                        https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5pnA5vbWEKmu-7c3D3n80kguJZgG95HDakA&s
+                    </a>
+                </td>
+                <td>
+                    <p>
+                        SQL injection refers to an attack that exploits a website's input fields. Malicious SQL code is injected into the vulnerabile
+                        input fields and, if executed, can potentially access the database. Once in the database an attacker perform actions including, but not limited to,
+                        manipulating data, stealing credentials and corrupting files.
+                    </p>
+                    <p>
+                        Sanitising user input is also a protection against SQL injection attacks.
+                    </p>
+                    <a
+                        class = "webAttackInformationLink"
+                        href = "https://www.tripwire.com/state-of-security/most-common-website-security-attacks-and-how-to-protect-yourself"
+                        target = "_blank"
+                    >
+                        https://www.tripwire.com/state-of-security/most-common-website-security-attacks-and-how-to-protect-yourself
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>Phishing</p>
+                    <img
+                        width = "300px"
+                        src = "images/phishing.JPG"
+                    >
+                    <p>Source: </p>
+                    <a
+                        href = "https://vipre.com/wp-content/uploads/2022/11/spear-phishing-1024x747.jpeg"
+                        target = "_blank"
+                    >
+                        href = "https://vipre.com/wp-content/uploads/2022/11/spear-phishing-1024x747.jpeg
+                    </a>
+                </td>
+                <td>
+                    <p>
+                        Phishing is a type of social engineering attack that imitates legitimate sources to trick users into revealing personal information. 
+                        One common method is targeted emails appearing to be from reputable companies. Often such emails will convey a sense of urgency to the users.
+                        For examle an email may say:
+                        <p>From: commmonweallthbank@email.com</p>
+                        <p>Subject: URGENT ACTION REQUIRED</p>
+                        <p>
+                            Message:  Suspicious activity detected.
+                            Please urgently provide your credit card informaiton to confirm your identity and secure your account.
+                        </p>
+                        <p>
+                            One way to prevent such attacks is increased awareness and training. Since these attacks rely on tricking users training
+                            should focus on key indicators of phishing attacks, such as urgent request for personal informaiton, slightly mispelled company names
+                            and suspicious links in emails.
+                        </p>
+                    </p>
+                    <a
+                        class = "webAttackInformationLink"
+                        href = "https://support.microsoft.com/en-us/windows/protect-yourself-from-phishing-0c7ea947-ba98-3bd9-7184-430e1f860a44#:~"
+                        target = "_blank"
+                    >
+                        https://support.microsoft.com/en-us/windows/protect-yourself-from-phishing-0c7ea947-ba98-3bd9-7184-430e1f860a44#:~
+                    </a>
+                </td>
+            </tr>                
+            <tr>
+                <td>
+                    <p>Man in the Middle Attacks</p>
+                    <img
+                        width = "300px"
+                        src = "images/mim.JPG"
+                    >
+                    <p>Source: </p>
+                    <a
+                        href = "https://www.imperva.com/learn/application-security/man-in-the-middle-attack-mitm/"
+                        target = "_blank"
+                    >
+                        https://www.imperva.com/learn/application-security/man-in-the-middle-attack-mitm/
+                    </a>
+                </td>
+                <td>
+                    <p>
+                        This attack occurs when an attacker places themselves between the user and the application to intercept information
+                        from legitimate communications. If networks are not properly secured, the attacker can access sensitive information
+                        contained in the network packets. Some possible outcomes of such an attack include credential theft or redirecting
+                        the user to malicious sites.
+                    </p>
+                    <p>
+                        End to end encryption is a key prevention for man in the middle attacks. Even if communication is intercepted, the attacker
+                        will not be able to decrypt packets to extract sensitive data.
+                    </p>
+                    <a
+                        class = "webAttackInformationLink"
+                        href = "https://www.imperva.com/learn/application-security/man-in-the-middle-attack-mitm/"
+                        target = "_blank"
+                    >
+                        https://www.imperva.com/learn/application-security/man-in-the-middle-attack-mitm/
+                    </a>
+                </td>
+            </tr>               
+            <tr>
+                <td>
+                    <p>Dos/DDoS</p>
+                    <img
+                        width = "300px"
+                        src = "images/ddos.JPG"
+                    >
+                    <p>Source: </p>
+                    <a
+                        href = "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1FIBEeoyzoa64lVGlWKaRV/3b878bb03df1729b48cd3f667cdfe3de/amplification_ddos_example.png"
+                        target = "_blank"
+                    >
+                        https://cf-assets.www.cloudflare.com/slt3lc6tev37/1FIBEeoyzoa64lVGlWKaRV/3b878bb03df1729b48cd3f667cdfe3de/amplification_ddos_example.png
+                    </a>
+                </td>
+                <td>
+                    <p>
+                        Denial of Service (DoS) and Distributed Dential of Service (DDoS) attacks occur when a hacker overwhelms a target machine
+                        in an attempt to make the service unusable. This is ahcieved through flooding the target with requests. Such attacks can
+                        involve a network of compromised machines coordinating to crash the target service. This can result in the target
+                        crashing, slowing down to an unusable pace or even corrupting data.
+                    </p>
+                    <a
+                        class = "webAttackInformationLink"
+                        href = "https://www.fortinet.com/resources/cyberglossary/dos-vs-ddos"
+                        target = "_blank"
+                    >
+                        https://www.fortinet.com/resources/cyberglossary/dos-vs-ddos
+                    </a>
+                </td>
+            </tr>                
+            <tr>
+                <td>
+                    <p>Clickjacking</p>
+                    <img
+                        width = "300px"
+                        src = "images/clickJacking.JPG"
+                    >
+                    <p>Source: </p>
+                    <a
+                        href = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHLv6Y6SHfpPW24OAHOjcfjjar0MckoLU3eg&s"
+                        target = "_blank"
+                    >
+                        https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHLv6Y6SHfpPW24OAHOjcfjjar0MckoLU3eg&s
+                    </a>
+                </td>
+                <td>
+                    <p>
+                        Clickjacking is a type of web attack that deceives the user into interacting with a malicious target site in ways they did not intend.
+                        One example of this is displaying a button on a web page with harmless text such as 'Click to load image'. Once clicked the user is
+                        actually interacting with a malicious website. This is done by embedding the malicious website 
+                        inside an iframe, setting the iframe's opacity to zero and placing it on top of the decoy button.
+                    </p>
+                    <a
+                        class = "webAttackInformationLink"
+                        href = "https://developer.mozilla.org/en-US/docs/Web/Security/Attacks/Clickjacking"
+                        target = "_blank"
+                    >
+                        https://developer.mozilla.org/en-US/docs/Web/Security/Attacks/Clickjacking
+                    </a>
+                </td>
+            </tr>                
+            <tr>
+                <td>
+                    <p>Broken Authentication</p>
+                    <img
+                        width = "300px"
+                        src = "images/brokenAuth.JPG"
+                    >
+                    <p>Source: </p>
+                    <a
+                        href = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4b0oL6pVxGGsmMCORlLh_TZ4tQ-j4NkTT5A&s"
+                        target = "_blank"
+                    >
+                        https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4b0oL6pVxGGsmMCORlLh_TZ4tQ-j4NkTT5A&s"
+                    </a>
+                </td>
+                <td>
+                    <p>
+                        Systems are subject to broken authentication attacks when attackers are able to exploit weaknesses in authentication system
+                        to compromise senstitive data such as passwords, tokens and user information. One leading cause of such an attack is poor design
+                            and weak implementation of access controls allowing a user to bypass security measures.
+                            A website is also vulnerable to such an attack when credentials are not properly encrypted in transit. 
+                    </p>
+                    <p>
+                        To prevent broken authentication secure coding practices, strong encryption, and robust access control mechanisms should be implemented. 
+                    </p>
+                    <a
+                        class = "webAttackInformationLink"
+                        href = "https://www.contrastsecurity.com/glossary/broken-authentication#:~:text=Authentication%20is%20%E2%80%9Cbro//\
+                            ken%E2%80%9D%20when%20attackers,of%20broken%20authentication%20is%20widespread"
+                        target = "_blank"
+                    >
+                        https://www.contrastsecurity.com/glossary/broken-authentication#:~:text=Authentication%20is%20%E2%80%9Cbro// 
+                        ken%E2%80%9D%20when%20attackers,of%20broken%20authentication%20is%20widespread
+                    </a>
+                </td>
+            </tr>               
+            <tr>
+                <td>
+                    <p>Click Fraud</p>
+                    <img
+                        width = "300px"
+                        src = "images/clickFraud.JPG"
+                    >
+                    <p>Source: </p>
+                    <a
+                        href = "https://multichannelmerchant.com/wp-content/uploads/2022/06/click-fraud-illustration-feature.jpg"
+                        target = "_blank"
+                    >
+                        https://multichannelmerchant.com/wp-content/uploads/2022/06/click-fraud-illustration-feature.jpg"
+                    </a>
+                </td>
+                <td>
+                    <p>
+                        Click fraud occurs when bots and other malicious actors repeatedly click on adds, artificially inflating advertisement interactions.
+                        If not protected against such an attack, a company can spend millions on advertisments that real users are not engaging with.
+                    </p>
+                    <P>
+                        To mitigate these attacks companies can use click fraud detection systems to identify and block suspicious activity.
+                    </P>
+                    <a
+                        class = "webAttackInformationLink"
+                        href = "https://www.clixtell.com/click-fraud-protection/?gad_source=1&gclid=CjwKCAiAt4C-BhBcEiwA8Kp0CdB5bvf3c65yeLkooeIHIQMsUNvPKD_N2E5P3flTtYSV3pxmCRquqhoCgLUQAvD_BwE"
+                        target = "_blank"
+                    >
+                        https://www.clixtell.com/click-fraud-protection/?gad_source=1&gclid=CjwKCAiAt4C-BhBcEiwA8Kp0C
+                        dB5bvf3c65yeLkooeIHIQMsUNvPKD_N2E5P3flTtYSV3pxmCRquqhoCgLUQAvD_BwE
+                    </a>
+                </td>
+            </tr>                
+            <tr>
+                <td>
+                    <p>HTTP Response Splitting</p>
+                    <img
+                        width = "300px"
+                        src = "images/httpSplitting.JPG"
+                    >
+                    <p>Source: </p>
+                    <a
+                        href = "https://thecyphere.com/wp-content/uploads/2022/03/HTTP-Response-Splitting-Attack-768x292-1.webp"
+                        target = "_blank"
+                    >
+                        https://thecyphere.com/wp-content/uploads/2022/03/HTTP-Response-Splitting-Attack-768x292-1.webp
+                    </a>
+                </td>
+                <td>
+                    <p>
+                        HTTP Response splitting as a web attack where an attacker manipulates HTTP response headers through injecting malicious code
+                        into the response. When web servers receive HTTP requests in an unexpected format they may process the request incorrectly.
+                        This may cause the server to behave in a way that allows the attacker to alter the server's HTTP response. This may lead to issues such as
+                        compromised security and misleading content on the website.
+
+                    </p>
+                    <p>Properly santitsing incoming requests and validating user input in a key prevention against such attacks.</p>
+                    <a
+                        class = "webAttackInformationLink"
+                        href = "https://www.bitdefender.com/en-au/blog/hotforsecurity/understanding-iot-vulnerabilities-http-response-splitting"
+                        target = "_blank"
+                    >
+                        https://www.bitdefender.com/en-au/blog/hotforsecurity/understanding-iot-vulnerabilities-http-response-splitting
+                    </a>
+                </td>
+            </tr>                
+            <tr>
+                <td>
+                    <p>Fuzzing</p>
+                    <img
+                        width = "300px"
+                        src = "images/fuzzing.JPG""
+                    >
+                    <p>Source: </p>
+                    <a
+                        href = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsgxc2Zx2kRIPVcsLH0E3uy24R97grjcVPfw&s"
+                        target = "_blank"
+                    >
+                        https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsgxc2Zx2kRIPVcsLH0E3uy24R97grjcVPfw&s
+                    </a>
+                </td>
+                <td>
+                    <p>
+                        Fuzzing is an attack where a hacker inputs large amounts of data into a website in the hopes that it will crash the site.
+                        The data is often random and malformed. Once the site has crashed the hackers uses software to analyse the site's weak spots, 
+                        and then uses these weak spots to gain further access to the server.
+                    </p>
+                    <p>
+                        Updated security measures and installing the latests patches are key mitigation techniques against fuzzing attacks.
+                    </p>
+                    <a
+                        class = "webAttackInformationLink"
+                        href = "https://www.tripwire.com/state-of-security/most-common-website-security-attacks-and-how-to-protect-yourself"
+                        target = "_blank"
+                    >
+                        https://www.tripwire.com/state-of-security/most-common-website-security-attacks-and-how-to-protect-yourself
+                    </a>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+
+
+    <hr class = "horizontalLine">
+
+
+    <!-- Task 4 -->
+
+    <section id = "task4Container">
+        <h2>Task 4: Javascript with buttons</h2>
+        <div id = "task4ButtonsContainer">
+            <button id = "catButton" onclick="doClick('cat')">Cat</button>
+            <button id = "dogButton"  onclick="doClick('dog')">Dog</button>
+            <button id = "frogButton"  onclick="doClick('frog')">Frog</button>
+        </div>
+        <input 
+            type="text" 
+            readonly 
+            id ="animalButtonText"
+        >
+        <p id ="animalMessage"></p>
+        <img 
+            id = "animalImage"
+            width="300px" 
+            alt="animal image" 
+            class = "hide"
+        />
+        <p class = "hide" id = "sourceText">
+            Source: 
+            <a id = "animalImageSource"  class = "hide"></a>
+        </p>
+    </section>  
+
+    <hr class = "horizontalLine"> 
+
+    <!-- Task 5 -->
+     <section id = "task5Section">
+        <h2>Task 5: Github report</h2>
+        <a 
+        href = "report.pdf"
+        target = "_blank"
+        >
+            Click here to see the report
+        </a>
+     </section>
 </body>
 </html>
