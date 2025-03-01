@@ -28,7 +28,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
+            padding-bottom: 50px;
         }
 
         body.dark-mode {
@@ -235,6 +236,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
+            width: 100%;
         }
 
         #task4ButtonsContainer{
@@ -253,6 +256,14 @@
         body.dark-mode input{
             background-color: var(--dark-grey-color);
             color: var(--light-pink-color);
+        }
+
+        /* Task 5 */
+        #task5Section {
+            margin-bottom: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         @media (max-width: 750px) {
@@ -864,5 +875,18 @@
             <a id = "animalImageSource"  class = "hide"></a>
         </p>
     </section>  
+
+    <hr class = "horizontalLine"> 
+
+    <!-- Task 5 -->
+     <section id = "task5Section">
+        <h2>Task 5: Github report</h2>
+        <a 
+        href = "report.pdf"
+        target = "_blank"
+        >
+            Click here to see the report
+        </a>
+     </section>
 </body>
 </html>
